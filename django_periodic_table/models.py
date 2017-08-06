@@ -228,7 +228,6 @@ class Element(models.Model):
         "A list of isotopes for this element."
         return self._ptentry.isotopes
     
-    @property
     def metallicity( self, labels=None ):
         "Metal, nonmetal or metalloid categorization."
         n = self.atomic_number
@@ -237,12 +236,10 @@ class Element(models.Model):
         elif n in METALLOIDS:   return labels [ METALLOID ]
         return labels [ METAL ]
     
-    @property
     def metallicity_css( self ):
         "Metal, nonmetal or metalloid categorization by CSS classes."
         return self.metallicity ( labels = self.CSS_CLASSES )
     
-    @property
     def category( self, labels=None ):
         "Any special groups (noble gases, actinides, etc.)."
         n = self.atomic_number
@@ -254,8 +251,7 @@ class Element(models.Model):
         if n in LANTHANIDES:    return labels [ LANTHANIDE ]
         if n in ACTINIDES:      return labels [ ACTINIDE ]
     
-    @property
-    def category_css( self, labels=None ):
+    def category_css( self ):
         "Any special groups (noble gases, actinides, etc.) as CSS classes."
         return self.category ( labels = self.CSS_CLASSES )
     
@@ -297,4 +293,3 @@ class Element(models.Model):
         except AttributeError:
             self._cached_pt_entry = pt.__getattribute__(self.symbol)
             return self._cached_pt_entry
-
