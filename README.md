@@ -71,10 +71,6 @@ git clone https://github.com/Autographic/django_periodic_table.git
 cd django_periodic_table/django_periodic_table
 ```
 
-```
-echo "somerandomdata" > key.txt
-```
-
 You should replace that string with real random data... (read the Django docs for more info).
 
 ### Activate app
