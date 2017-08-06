@@ -228,32 +228,29 @@ class Element(models.Model):
         "A list of isotopes for this element."
         return self._ptentry.isotopes
     
-    def metallicity( self, labels=None ):
-        "Metal, nonmetal or metalloid categorization."
-        n = self.atomic_number
-        if labels is None: labels = self.CATEGORY_LABELS
-        if n in NONMETALS:      return labels [ NONMETAL ]
-        elif n in METALLOIDS:   return labels [ METALLOID ]
-        return labels [ METAL ]
+    @property
+    def metallicity( self ):
+        "Metal, nonmetal or metalloid categorization in human readable form."
+        return self.CATEGORY_LABELS [ self._metallicity ]
     
+    @property
     def metallicity_css( self ):
         "Metal, nonmetal or metalloid categorization by CSS classes."
-        return self.metallicity ( labels = self.CSS_CLASSES )
+        return self.CSS_CLASSES [ self._metallicity ]
     
-    def category( self, labels=None ):
-        "Any special groups (noble gases, actinides, etc.)."
-        n = self.atomic_number
-        if labels is None: labels = self.CATEGORY_LABELS
-        if n in HALOGENS:       return labels [ HALOGEN ]
-        if n in NOBLE_GASES:    return labels [ NOBLE_GAS ]
-        if n in ALKALI_METALS:  return labels [ ALKALI_METAL ]
-        if n in ALKALI_EARTHS:  return labels [ ALKALI_EARTH ]
-        if n in LANTHANIDES:    return labels [ LANTHANIDE ]
-        if n in ACTINIDES:      return labels [ ACTINIDE ]
+    @property
+    def category( self ):
+        "Any special groups (noble gases, actinides, etc.), human readable."
+        try:
+            return self.CATEGORY_LABELS [ self._category ]
+        except KeyError: return ''
     
+    @property
     def category_css( self ):
         "Any special groups (noble gases, actinides, etc.) as CSS classes."
-        return self.category ( labels = self.CSS_CLASSES )
+        try:
+            return self.CSS_CLASSES [ self._category ]
+        except KeyError: return ''
     
     @property
     def period(self):
@@ -282,6 +279,26 @@ class Element(models.Model):
         cat = METAL
     
     objects = PeriodicTableManager()
+    
+    @property
+    def _metallicity( self ):
+        "Metal, nonmetal or metalloid categorization."
+        n = self.atomic_number
+        if n in NONMETALS:      return NONMETAL
+        if n in METALLOIDS:     return METALLOID
+        return METAL
+    
+    @property
+    def _category( self ):
+        "Any special groups (noble gases, actinides, etc.)."
+        n = self.atomic_number
+        if n in HALOGENS:       return HALOGEN
+        if n in NOBLE_GASES:    return NOBLE_GAS
+        if n in ALKALI_METALS:  return ALKALI_METAL
+        if n in ALKALI_EARTHS:  return ALKALI_EARTH
+        if n in LANTHANIDES:    return LANTHANIDE
+        if n in ACTINIDES:      return ACTINIDE
+        return None
     
     def __str__(self):
         return u"%s(%s)" % (self.name, self.symbol)
