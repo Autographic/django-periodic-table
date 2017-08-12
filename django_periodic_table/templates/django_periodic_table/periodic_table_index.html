@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<table><tbody>
+{% for prd in main_table %}
+<tr class="dpt_period">{% for grp in prd %}
+{% if grp %}{% with element=grp %}
+    <td class="{{ element.css_class }}">{% include 'django_periodic_table/element.html' %}{% endwith %}
+{% else %}<td class="dpt_blank">
+{% endif %}</td>{% endfor %}{# /group #}
+</tr>{% endfor %}{# /period #}
+</tbody><tbody>
+<tr><td colspan="18">&nbsp;</td></tr>
+</tbody><tbody>
+<tr id="dpt_lanthanides" class="dpt_period">
+<td colspan="2">Lanthanides:</td>{% for e in lanthanides %}{% with element=e %}
+<td class="{{ element.css_class }}">{% include 'django_periodic_table/element.html' %}</td>
+{% endwith %}{% endfor %}</tr>
+<tr id="dpt_actinides" class="dpt_period">
+<td colspan="2">Actinides:</td>{% for e in actinides %}{% with element=e %}
+<td class="{{ element.css_class }}">{% include 'django_periodic_table/element.html' %}</td>
+{% endwith %}{% endfor %}</tr>
+</tbody></table>
+{% endblock content %}
+
+{% block stylesheet %}
+<style>
+.dpt_element {
+    padding:2pt 6pt; border:1pt solid black;
+}
+.dpt_element .dpt_aprd, .dpt_element .dpt_agrp { display: none; }
+.dpt_sym {
+    font-size:3em;
+    font-family:sans-serif;
+    text-align:center;
+    clear:both;
+}
+.dpt_anum {
+    float:right;
+    font-family:sans-serif;
+    font-size:1.5em;
+    color:red;
+}
+.dpt_amass {
+    float:left;clear:right;
+    font-size:.8em;
+    margin-top:-6pt;
+}
+.dpt_name {
+    text-align:center;
+}
+.dpt_met .dpt_element { /* metals */
+    background:#ddd;
+}
+.dpt_moid .dpt_element { /* metalloids */
+    background:#aad;
+}
+.dpt_nmet .dpt_element { /* nonmetals */
+    background:#9d9;
+}
+
+.dpt_solid .dpt_sym { /* solids */
+    color:#444;
+}
+.dpt_liquid .dpt_sym { /* solids */
+    color:#699;
+}
+.dpt_gas .dpt_sym { /* solids */
+    color:#fff;
+}
+
+
+.dpt_amet .dpt_element { /* alkali metals */
+    background: #eca;
+}
+.dpt_aear .dpt_element { /* alkali earths */
+    background: #ca9;
+}
+.dpt_hal .dpt_element { /* halogens */
+    background: #cc9;
+}
+.dpt_nob .dpt_element { /* noble gases */
+    border:3pt solid #600; padding:0pt 4pt;
+    background: #c9a;
+}
+.dpt_tmet .dpt_element { /* transition metals */
+    background: #eec;
+}
+.dpt_bmet .dpt_element { /* transition metals */
+    background: #c9c;
+}
+.dpt_lan .dpt_element { /* lanthanides */
+    background: #ece;
+}
+.dpt_act .dpt_element { /* actinides */
+    background: #eea;
+}
+</style>
+{% endblock %}
