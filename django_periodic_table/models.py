@@ -187,17 +187,6 @@ class Element(models.Model):
         "CSS classes for STP matter phase."
         return self.phase_at_stp ( labels = self.CSS_CLASSES )
     
-    def metal_type( self, labels=CATEGORY_LABELS ):
-        "Metal category; returns empty string for nonmetals."
-        n = self.atomic_number
-        if n in TRANSITION_METALS:  return labels [ TRANSITION_METAL ]
-        if n in BASIC_METALS:       return labels [ BASIC_METAL ]
-        return ''
-    
-    def metal_type_css( self ):
-        "Metal category by CSS classes."
-        return self.metal_type ( labels = self.CSS_CLASSES )
-    
     def metallicity( self, labels=CATEGORY_LABELS ):
         "Metal, nonmetal or metalloid categorization."
         n = self.atomic_number
@@ -212,12 +201,14 @@ class Element(models.Model):
     def category( self, labels=CATEGORY_LABELS ):
         "Any special groups (noble gases, actinides, etc.)."
         n = self.atomic_number
-        if n in HALOGENS:       return labels [ HALOGEN ]
-        if n in NOBLE_GASES:    return labels [ NOBLE_GAS ]
-        if n in ALKALI_METALS:  return labels [ ALKALI_METAL ]
-        if n in ALKALI_EARTHS:  return labels [ ALKALI_EARTH ]
-        if n in LANTHANIDES:    return labels [ LANTHANIDE ]
-        if n in ACTINIDES:      return labels [ ACTINIDE ]
+        if n in HALOGENS:           return labels [ HALOGEN ]
+        if n in NOBLE_GASES:        return labels [ NOBLE_GAS ]
+        if n in ALKALI_METALS:      return labels [ ALKALI_METAL ]
+        if n in ALKALI_EARTHS:      return labels [ ALKALI_EARTH ]
+        if n in LANTHANIDES:        return labels [ LANTHANIDE ]
+        if n in ACTINIDES:          return labels [ ACTINIDE ]
+        if n in TRANSITION_METALS:  return labels [ TRANSITION_METAL ]
+        if n in BASIC_METALS:       return labels [ BASIC_METAL ]
         return ''
     
     def category_css( self ):
@@ -253,7 +244,6 @@ class Element(models.Model):
             self.metallicity_css(),
             self.category_css(),
             self.phase_at_stp_css(),
-            self.metal_type_css(),
         ]
         return ' '.join([ i for i in values if len(i) ])
     
@@ -269,4 +259,3 @@ class Element(models.Model):
         except AttributeError:
             self._cached_pt_entry = pt.__getattribute__(self.symbol)
             return self._cached_pt_entry
-
