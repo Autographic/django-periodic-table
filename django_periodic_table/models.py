@@ -102,22 +102,16 @@ class PeriodicTableManager(models.Manager):
         "Build a query to select non-contiguous ranges of elements."
         return self.get_queryset().filter (
             self._build_Q_query( element_numbers, criterion ))
-        #return super(PeriodicTableManager, self).get_queryset().filter (
-        #    self._build_Q_query( element_numbers, criterion ))
     
     def _Q_query_exclude ( self, element_numbers, criterion='atomic_number' ):
         "Build a query to select non-contiguous ranges of elements."
         return self.get_queryset().exclude (
             self._build_Q_query( element_numbers, criterion ))
-        #return super(PeriodicTableManager, self).get_queryset().exclude (
-        #    self._build_Q_query( element_numbers, criterion ))
     
     def _range_query_filter ( self, low, high ):
         "Build a query to select contiguous ranges of elements."
         return self.get_queryset().filter ( 
             atomic_number__gte=low).filter ( atomic_number__lte=high )
-        #return super(PeriodicTableManager, self).get_queryset().filter ( 
-        #    atomic_number__gte=low).filter ( atomic_number__lte=high )
 
 
 class Element(models.Model):
