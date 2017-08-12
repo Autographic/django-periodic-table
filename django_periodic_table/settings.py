@@ -31,7 +31,7 @@ METALS =            tuple ( [ i for i in range(1, LARGEST_ATOMIC_NUMBER+1)
 # Phase at standard temperature and pressure
 STP_LIQUIDS =       35,80
 STP_GASES =         1,2,7,8,9,10,17,18,36,54,86,118
-STP_SOLIDS =        tuple ( [ i for i in range(1, LARGEST_ATOMIC_NUMBER)
+STP_SOLIDS =        tuple ( [ i for i in range(1, LARGEST_ATOMIC_NUMBER+1)
     if i not in STP_LIQUIDS and i not in STP_GASES ])
 
 # Element types
@@ -86,4 +86,3 @@ CSS_CLASSES = {
     TRANSITION_METAL: 'dpt_tmet',
     BASIC_METAL:    'dpt_bmet',
 }
-
