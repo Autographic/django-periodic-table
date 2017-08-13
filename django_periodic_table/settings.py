@@ -52,6 +52,19 @@ BASIC_METALS =      13,31,49,50,81,82,83,113,114,115,116
 PERIODIC_TABLE_GROUPS = ( None,'1A','2A','3B','4B','5B','6B','7B',
     '8B','8B','8B','1B','2B','3A','4A','5A','6A','7A','8A' )
 
+def group_name_to_roman(val):
+    "Simple converter from Arabic to Roman numeral group names"
+    try:
+        num,letter = val
+        num = {
+            1:'I',2:'II',3:'III',4:'VI',5:'V',6:'VI',7:'VII',8:'VIII',
+        }[int(num)]
+        return '%d%s'%(num,letter)
+    except: return val
+
+PERIODIC_TABLE_GROUPS_ROMAN = tuple (
+    [ group_name_to_roman(g) for g in PERIODIC_TABLE_GROUPS ]
+)
 
 CATEGORY_LABELS = {
     METAL:          _(u'metal'),
