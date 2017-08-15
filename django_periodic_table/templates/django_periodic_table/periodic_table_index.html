@@ -1,7 +1,7 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}{% load i18n %}
+{% block title %}{% trans "Periodic Table of the Elements" %}{% endblock %}
 
 {% block content %}
-
 <table><tbody>
 {% for prd in main_table %}
 <tr class="dpt_period">{% for grp in prd %}
