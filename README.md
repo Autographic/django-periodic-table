@@ -55,7 +55,7 @@ Finally, element period membership --- the row they occupy on the table --- is c
 
 ## Installation
 
-While the code was developed under Django 1.11 and Python 3.5.2, it should work under any reasonably recent version of Django under Python 2 as well; it has been tested under Django 1.9 and Python 2.7 with no bugd apparent and all tests succeeding.
+While the code was developed under Django 1.11 and Python 3.5.2, it should work under any reasonably recent version of Django under Python 2 as well; it has been tested under Django 1.9 and Python 2.7 with no bugs apparent and all tests succeeding.
 
 ### Get Django
 
