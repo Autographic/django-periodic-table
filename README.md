@@ -1,5 +1,7 @@
 # Django Periodic Table
 
+![Django Periodic Table](dpt-screenshot.png)
+
 <a class="mk-toclify" id="table_of_contents"></a>
 
 # Table of Contents
