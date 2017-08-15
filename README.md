@@ -24,7 +24,7 @@ The code was initially developed in August 2017, using periodictable 1.5.0, Djan
 
 ### Element Classification
 
-The DPT models file contains categorizations of metallicity (metal, metalloid and nonmetal) and periodic table groupings (halogens, noble gases, alkali metals, alkali earths, lanthanides, and actinides). These include the defintion of CSS classes (e.g., *dpt_met* for metals; *dpt_aear* for alkali earths) to facilitate presentation.
+The DPT models file contains categorizations of metallicity (metal, metalloid and nonmetal) and periodic table groupings (halogens, noble gases, alkali metals, alkali earths, transition metals, base metals, lanthanides, and actinides). These include the defintion of CSS classes (e.g., *dpt_met* for metals; *dpt_aear* for alkali earths) to facilitate presentation.
 
 Also included is a custom *PeriodicTableManager* class, featuring methods for accessing these such as 
 
