@@ -1,4 +1,4 @@
-{% load i18n %}<article class="dpt_element">
+{% load i18n %}<article class="dpt_element {{ element.css_class }}">
 <section class="dpt_aprd">{% trans 'period' %} {{ element.period }}</section>
 <section class="dpt_agrp">{% trans 'group' %} {{ element.group }} (<span class="dpt_agpn">{{ element.group_name }}</span>)</section>
 <section class="dpt_anum">{{ element.atomic_number }}</section>
