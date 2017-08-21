@@ -141,6 +141,12 @@ class Element(models.Model):
         ], 
     )
     
+    ptvideo = models.CharField ( _("PeriodicVideos entry on YouTube"),
+        help_text="YouTube video code for this element's entry by Periodicvideos."
+        max_length=11,
+        default="",
+    )
+    
     # Respecification of CSS classes is easy through subclassing
     CSS_CLASSES = CSS_CLASSES
     
