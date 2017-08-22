@@ -1,4 +1,6 @@
-{% load i18n %}<article class="dpt_element {{ element.css_class }}">
+{% load i18n %}{% spaceless %}
+{% if element.youtube_url %}<a href="{{ element.youtube_url }}" target="periodicvideos">{% endif %}
+<article class="dpt_element {{ element.css_class }}">
 <section class="dpt_aprd">{% trans 'period' %} {{ element.period }}</section>
 <section class="dpt_agrp">{% trans 'group' %} {{ element.group }} (<span class="dpt_agpn">{{ element.group_name }}</span>)</section>
 <section class="dpt_anum">{{ element.atomic_number }}</section>
@@ -6,3 +8,5 @@
 <section class="dpt_sym">{{ element.symbol }}</section>
 <section class="dpt_name">{% trans element.name %}</section>
 </article>
+{% if element.youtube_url %}</a>{% endif %}
+{% endspaceless %}
