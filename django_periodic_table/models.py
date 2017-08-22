@@ -141,8 +141,8 @@ class Element(models.Model):
         ], 
     )
     
-    ptvideo = models.CharField ( _("PeriodicVideos entry on YouTube"),
-        help_text="YouTube video code for this element's entry by Periodicvideos."
+    ptvideo = models.SlugField ( _("PeriodicVideos entry on YouTube"),
+        help_text="YouTube video code for this element's entry by Periodicvideos.",
         max_length=11,
         default="",
     )
@@ -251,6 +251,12 @@ class Element(models.Model):
     
     def __str__(self):
         return u"%s(%s)" % (self.name, self.symbol)
+    
+    @property
+    def youtube_url(self):
+        if self.ptvideo:
+            return 'http://youtu.be/%s' % self.ptvideo
+        return ''
     
     @property
     def _ptentry(self):
