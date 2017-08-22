@@ -117,5 +117,5 @@
     {"model": "django_periodic_table.element", "pk": 116, "fields": {"atomic_number": 116, "symbol": "Lv", "group": 16, "ptvideo": "YWKlqO9niuY"}},
     {"model": "django_periodic_table.element", "pk": 117, "fields": {"atomic_number": 117, "symbol": "Ts", "group": 17, "ptvideo": "1RGlXh9eC5E"}},
     {"model": "django_periodic_table.element", "pk": 118, "fields": {"atomic_number": 118, "symbol": "Og", "group": 18, "ptvideo": "VMv44bIBdQI"}},
-    {"model": "django_periodic_table.element", "pk": 1000, "fields": {"atomic_number": 1, "symbol": "D", "group": 0, "ptvideo": ""}},
+    {"model": "django_periodic_table.element", "pk": 1000, "fields": {"atomic_number": 1, "symbol": "D", "group": 0, "ptvideo": "hUVzb0fzHsk"}},
     {"model": "django_periodic_table.element", "pk": 1001, "fields": {"atomic_number": 1, "symbol": "T", "group": 0, "ptvideo": ""}}]
