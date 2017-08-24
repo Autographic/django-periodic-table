@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n %}
+{% load i18n static %}
 {% block title %}{% trans "Periodic Table of the Elements" %}{% endblock %}
 {% block content %}
 <table><tbody>
@@ -25,85 +25,5 @@
 {% endblock content %}
 
 {% block stylesheet %}
-<style>
-.dpt_element {
-    padding:2pt 4pt; border:3pt solid black;
-}
-.dpt_element .dpt_aprd, .dpt_element .dpt_agrp { display: none; }
-.dpt_period a {
-    text-decoration:none;
-    color:inherit;
-}
-.dpt_sym {
-    font-size:3em;
-    font-family:sans-serif;
-    text-align:center;
-    clear:both;
-}
-.dpt_period a:hover .dpt_sym {
-    font-weight:bolder;
-}
-.dpt_anum {
-    float:right;
-    font-family:sans-serif;
-    font-size:1.5em;
-    color:red;
-}
-.dpt_amass {
-    float:left;clear:right;
-    font-size:.8em;
-    margin-top:-6pt;
-}
-.dpt_name {
-    text-align:center;
-}
-.dpt_met { /* metals */
-    border-color:#222;
-}
-.dpt_moid { /* metalloids */
-    border-color:#992;
-    background:#ccc;
-}
-.dpt_nmet { /* nonmetals */
-    border-color:#292;
-    background:#99c;
-}
-
-.dpt_solid .dpt_sym { /* solids */
-    color:#444;
-}
-.dpt_liquid .dpt_sym { /* solids */
-    color:#699;
-}
-.dpt_gas .dpt_sym { /* solids */
-    color:#fff;
-}
-
-
-.dpt_amet { /* alkali metals */
-    background: #eca;
-}
-.dpt_aear { /* alkali earths */
-    background: #ca9;
-}
-.dpt_hal { /* halogens */
-    background: #cc9;
-}
-.dpt_nob { /* noble gases */
-    /*border:3pt solid #600; padding:0pt 4pt;*/
-    background: #c9a;
-}
-.dpt_tmet { /* transition metals */
-    background: #eec;
-}
-.dpt_bmet { /* transition metals */
-    background: #c9c;
-}
-.dpt_lan { /* lanthanides */
-    background: #ece;
-}
-.dpt_act { /* actinides */
-    background: #eea;
-}
-</style>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/periodictable.css' %}">
 {% endblock %}
